@@ -1,66 +1,42 @@
 import 'package:flutter/material.dart';
-import 'Navitems.dart';
 
-class Mobilenav extends StatefulWidget {
-  const Mobilenav({super.key});
+class Mobilenav extends StatelessWidget implements PreferredSizeWidget {
+  final VoidCallback onMenuToggle;
+  const Mobilenav({super.key, required this.onMenuToggle});
 
+  // ini wajib: memberi tahu Scaffold berapa tinggi AppBar ini
   @override
-  State<Mobilenav> createState() => _MobilenavState();
-}
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight + 20);
 
-class _MobilenavState extends State<Mobilenav> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 60,
-      width: double.infinity,
-      margin: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
-      decoration: BoxDecoration(
+      height: preferredSize.height,
+      padding: const EdgeInsets.symmetric(horizontal: 16),
+      decoration: const BoxDecoration(
         gradient: LinearGradient(
           colors: [Color(0xFF455A64), Color(0xFF1A237E), Color(0xFF455A64)],
         ),
-        borderRadius: BorderRadius.circular(100),
+        borderRadius: BorderRadius.only(
+          bottomLeft: Radius.circular(30),
+          bottomRight: Radius.circular(30),
+        ),
         boxShadow: [
           BoxShadow(spreadRadius: 3, blurRadius: 3, offset: Offset(0, 3)),
         ],
       ),
       child: Row(
         children: [
-          Padding(padding: EdgeInsetsGeometry.only(right: 20)),
-          Text(
+          const SizedBox(width: 8),
+          const Text(
             "Mobile",
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 15,
-              shadows: [
-                Shadow(
-                  color: Colors.black,
-                  blurRadius: 0,
-                  offset: Offset(1, 2),
-                ),
-              ],
-            ),
+            style: TextStyle(color: Colors.white, fontSize: 18),
           ),
           Spacer(),
-          for (int i = 0; i < Navitems.length; i++)
-            TextButton(
-              onPressed: () {},
-              child: Text(
-                Navitems[i],
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 15,
-                  shadows: [
-                    Shadow(
-                      color: Colors.black,
-                      blurRadius: 0,
-                      offset: Offset(1, 2),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          Padding(padding: EdgeInsetsGeometry.only(right: 20)),
+          IconButton(
+            onPressed: onMenuToggle,
+            icon: const Icon(Icons.menu, color: Colors.white),
+          ),
         ],
       ),
     );

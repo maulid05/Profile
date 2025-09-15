@@ -12,14 +12,14 @@ class _DesktopnavState extends State<Desktopnav> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 60,
+      height: 80,
       width: double.infinity,
-      margin: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+      margin: EdgeInsets.symmetric(vertical: 0, horizontal: 0),
       decoration: BoxDecoration(
         gradient: LinearGradient(
           colors: [Color(0xFF455A64), Color(0xFF1A237E), Color(0xFF455A64)],
         ),
-        borderRadius: BorderRadius.circular(100),
+        borderRadius: BorderRadius.only(bottomLeft: Radius.circular(30), bottomRight: Radius.circular(30)),
         boxShadow: [
           BoxShadow(spreadRadius: 3, blurRadius: 3, offset: Offset(0, 3)),
         ],
@@ -31,7 +31,7 @@ class _DesktopnavState extends State<Desktopnav> {
             "Desktop",
             style: TextStyle(
               color: Colors.white,
-              fontSize: 15,
+              fontSize: 18,
               shadows: [
                 Shadow(
                   color: Colors.black,
@@ -49,7 +49,7 @@ class _DesktopnavState extends State<Desktopnav> {
                 Navitems[i],
                 style: TextStyle(
                   color: Colors.white,
-                  fontSize: 15,
+                  fontSize: 18,
                   shadows: [
                     Shadow(
                       color: Colors.black,
