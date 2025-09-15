@@ -17,6 +17,7 @@ class _mobileIndexState extends State<mobileIndex> {
             children: [
               Container(
                 height: 500,
+                
                 decoration: BoxDecoration(
                   color: Colors.blueGrey,
                   boxShadow: [
